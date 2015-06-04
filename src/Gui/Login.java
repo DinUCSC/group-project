@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package Gui;
+
 import pilgrimscrutinizer.*;
 
 /**
@@ -130,23 +131,27 @@ public class Login extends javax.swing.JFrame {
             case 1: {
                 Admin ad = new Admin();
                 ad.setVisible(true);
+                ad.user=txtUsername.getText();
                 this.dispose();
                 break;
             }
             case 2: {
-            System.out.println("regular");
-            break;
-            } 
-            case 3:{
-                txtPassword.setText("");
-            System.out.println("wrong psswrd");            
-            break;
+                Regular rg=new Regular();
+                rg.setVisible(true);
+                rg.user=txtUsername.getText();
+                this.dispose();
+                break;
             }
-            case 4:{
+            case 3: {
+                txtPassword.setText("");
+                System.out.println("wrong psswrd");
+                break;
+            }
+            case 4: {
                 txtPassword.setText("");
                 txtUsername.setText("");
-            System.out.println("rddd");
-            break;
+                System.out.println("rddd");
+                break;
             }
         }
     }//GEN-LAST:event_btnLoginActionPerformed

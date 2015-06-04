@@ -71,4 +71,66 @@ public class DBOperation {
 
         }
     }
+
+public int checkUsername(String username) {
+        try {
+            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
+            String query = "SELECT Username FROM user";
+            pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                if (username.equals(rs.getString(1))) {
+                    return 0;
+
+                }
+            }
+            return 1;
+
+        } catch (Exception e) {
+            System.out.print(e);
+            return 2;
+        } finally {
+            try {
+                if (pst != null) {
+                    pst.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+            }
+
+        }
+    }
+public boolean addNewUser(UserDetails ud) {
+        try {
+            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
+            String query = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)";
+            pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
+            pst.setInt(1, ud.getEmpID());
+            pst.setString(2, ud.getEmployeeType());
+            pst.setString(3, ud.getName());
+            pst.setString(4, ud.getAddress());
+            pst.setInt(5, ud.getMobile());
+            pst.setString(6, ud.getNic());
+            pst.setString(7, ud.getUsername());
+            pst.setString(8, ud.getPassword());
+            pst.executeUpdate();
+            return true;
+        } catch (Exception ex) {
+            System.out.print(ex);
+            return false;
+        } finally {
+            try {
+                if (pst != null) {
+                    pst.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+            }
+        }
+    }
+
 }

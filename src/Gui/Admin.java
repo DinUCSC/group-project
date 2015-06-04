@@ -9,12 +9,15 @@ package Gui;
  * @author HP
  */
 public class Admin extends javax.swing.JFrame {
+public String user;
 
     /**
      * Creates new form Admin
      */
     public Admin() {
         initComponents();
+        lblUsername.setText(user);
+        add(lblUsername);
     }
 
     /**
@@ -46,7 +49,7 @@ public class Admin extends javax.swing.JFrame {
         setTitle("Pilgrim Scrutinizer");
 
         lblUsername.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        lblUsername.setText("UName");
+        lblUsername.setText(user);
 
         btnChangePassword.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnChangePassword.setText("Change Password");

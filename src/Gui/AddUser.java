@@ -4,12 +4,16 @@
  */
 package Gui;
 
+import javax.swing.JOptionPane;
+import pilgrimscrutinizer.DBOperation;
+import pilgrimscrutinizer.UserDetails;
+
 /**
  *
  * @author HP
  */
 public class AddUser extends javax.swing.JFrame {
-
+    DBOperation db = new DBOperation();
     /**
      * Creates new form AddUser
      */
@@ -33,7 +37,7 @@ public class AddUser extends javax.swing.JFrame {
         txtName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtAddress = new javax.swing.JTextArea();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         jLabel4 = new javax.swing.JLabel();
         txtMobile = new javax.swing.JTextField();
@@ -44,7 +48,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnCancel = new javax.swing.JButton();
-        btnCancel1 = new javax.swing.JButton();
+        btnAddUser = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtConfirmPassword = new javax.swing.JPasswordField();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -74,9 +78,9 @@ public class AddUser extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Address");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtAddress.setColumns(20);
+        txtAddress.setRows(4);
+        jScrollPane1.setViewportView(txtAddress);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("Mobile");
@@ -92,9 +96,19 @@ public class AddUser extends javax.swing.JFrame {
 
         btnCancel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
 
-        btnCancel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnCancel1.setText("Add User");
+        btnAddUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAddUser.setText("Add User");
+        btnAddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddUserActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel9.setText("Confirm Password");
@@ -129,7 +143,7 @@ public class AddUser extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,7 +187,7 @@ public class AddUser extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -205,9 +219,66 @@ public class AddUser extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    void clerFields() {
+        txtName.setText("");
+        txtAddress.setText("");
+        txtMobile.setText("");
+        txtNIC.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtConfirmPassword.setText("");
+        
+    }
     private void txtEmployeeTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmployeeTypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmployeeTypeActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        this.clerFields();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
+        // TODO add your handling code here:
+        UserDetails ud = new UserDetails();
+        if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
+            int check = db.checkUsername(txtUsername.getText());
+            if (check == 1) {
+                ud.setEmpID(0);
+                ud.setEmployeeType(txtEmployeeType.getSelectedItem().toString());
+                ud.setName(txtName.getText());
+                ud.setAddress(txtAddress.getText());
+                ud.setMobile(Integer.parseInt(txtMobile.getText().toString()));
+                ud.setNic(txtNIC.getText());
+                ud.setUsername(txtUsername.getText());
+                ud.setPassword(txtPassword.getText());
+                
+                boolean result = db.addNewUser(ud);
+                
+                if (result) {
+                    JOptionPane.showMessageDialog(this, "Successfully Inserted..!");
+                    clerFields();
+                    this.dispose();
+                    
+                } else {
+                    JOptionPane.showMessageDialog(this, "Sorry error occured while inserting..!");
+                    
+                }
+            } else if (check == 0) {
+                JOptionPane.showMessageDialog(this, "Username Already exist..!");
+                txtUsername.setText("");
+                
+            }
+            else{
+            JOptionPane.showMessageDialog(this, "Sorry error occured while checking username..!");
+                
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Password Mismatch..!");
+            txtPassword.setText("");
+            txtConfirmPassword.setText("");
+        }
+    }//GEN-LAST:event_btnAddUserActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,8 +315,8 @@ public class AddUser extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAddUser;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnCancel1;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -260,7 +331,7 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea txtAddress;
     private javax.swing.JPasswordField txtConfirmPassword;
     private javax.swing.JComboBox txtEmployeeType;
     private javax.swing.JTextField txtMobile;

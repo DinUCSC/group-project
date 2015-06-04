@@ -9,7 +9,7 @@ package Gui;
  * @author HP
  */
 public class Regular extends javax.swing.JFrame {
-
+public String user;
     /**
      * Creates new form Regular
      */
@@ -32,10 +32,10 @@ public class Regular extends javax.swing.JFrame {
         lblUsername = new javax.swing.JLabel();
         btnTour = new javax.swing.JButton();
         btnCustomer = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         btnTour1 = new javax.swing.JButton();
         btnCustomer1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnPayments = new javax.swing.JButton();
+        btnReports = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -55,7 +55,7 @@ public class Regular extends javax.swing.JFrame {
         btnSignOut.setText("Sign Out");
 
         lblUsername.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        lblUsername.setText("UName");
+        lblUsername.setText(user);
 
         btnTour.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnTour.setText("Tour");
@@ -64,16 +64,6 @@ public class Regular extends javax.swing.JFrame {
         btnCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCustomer.setText("Customer");
         btnCustomer.setBorder(new javax.swing.border.MatteBorder(null));
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton3.setText("Handle Payments");
-        jButton3.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton3.setContentAreaFilled(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
 
         btnTour1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnTour1.setText("Search");
@@ -85,7 +75,7 @@ public class Regular extends javax.swing.JFrame {
         });
 
         btnCustomer1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnCustomer1.setText("Handle Discount");
+        btnCustomer1.setText("Discount");
         btnCustomer1.setBorder(new javax.swing.border.MatteBorder(null));
         btnCustomer1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,13 +83,21 @@ public class Regular extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton4.setText("Generate Reports");
-        jButton4.setBorder(new javax.swing.border.MatteBorder(null));
-        jButton4.setContentAreaFilled(false);
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnPayments.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnPayments.setText("Payments");
+        btnPayments.setBorder(new javax.swing.border.MatteBorder(null));
+        btnPayments.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnPaymentsActionPerformed(evt);
+            }
+        });
+
+        btnReports.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnReports.setText("Reports");
+        btnReports.setBorder(new javax.swing.border.MatteBorder(null));
+        btnReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportsActionPerformed(evt);
             }
         });
 
@@ -117,22 +115,19 @@ public class Regular extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnSignOut, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                                .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnTour1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)))
-                        .addGap(66, 66, 66)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)))
+                            .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTour1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                                .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -145,16 +140,15 @@ public class Regular extends javax.swing.JFrame {
                     .addComponent(btnSignOut)
                     .addComponent(btnChangePassword))
                 .addGap(53, 53, 53)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnTour, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPayments, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCustomer1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTour1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56))
         );
 
@@ -190,21 +184,21 @@ public class Regular extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     private void btnTour1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTour1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTour1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void btnCustomer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCustomer1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCustomer1ActionPerformed
+
+    private void btnPaymentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaymentsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPaymentsActionPerformed
+
+    private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,11 +238,11 @@ public class Regular extends javax.swing.JFrame {
     private javax.swing.JButton btnChangePassword;
     private javax.swing.JButton btnCustomer;
     private javax.swing.JButton btnCustomer1;
+    private javax.swing.JButton btnPayments;
+    private javax.swing.JButton btnReports;
     private javax.swing.JButton btnSignOut;
     private javax.swing.JButton btnTour;
     private javax.swing.JButton btnTour1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

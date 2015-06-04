@@ -76,26 +76,23 @@
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="btnTour" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace pref="72" max="32767" attributes="0"/>
-                                  <Component id="btnCustomer" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="btnTour1" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btnCustomer1" min="-2" pref="145" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jButton3" min="-2" pref="145" max="-2" attributes="0"/>
-                              <Component id="jButton4" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="btnTour" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                              <Component id="btnTour1" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace pref="95" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnCustomer1" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <EmptySpace pref="88" max="32767" attributes="0"/>
+                                  <Component id="btnReports" min="-2" pref="145" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="btnCustomer" min="-2" pref="145" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="btnPayments" min="-2" pref="145" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -113,18 +110,16 @@
                       <Component id="btnChangePassword" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnTour" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
-                          <Component id="btnCustomer" alignment="3" min="-2" pref="88" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jButton3" min="-2" pref="84" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnTour" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
+                      <Component id="btnCustomer" alignment="3" min="-2" pref="88" max="-2" attributes="0"/>
+                      <Component id="btnPayments" alignment="3" min="-2" pref="88" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="51" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btnCustomer1" alignment="3" min="-2" pref="88" max="-2" attributes="0"/>
                       <Component id="btnTour1" alignment="3" min="-2" pref="87" max="-2" attributes="0"/>
-                      <Component id="jButton4" alignment="3" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="btnReports" alignment="3" min="-2" pref="88" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
               </Group>
@@ -156,7 +151,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="3"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="UName"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="user" type="code"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnTour">
@@ -185,23 +182,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Handle Payments"/>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
-                <MatteColorBorder/>
-              </Border>
-            </Property>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="btnTour1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -223,7 +203,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Handle Discount"/>
+            <Property name="text" type="java.lang.String" value="Discount"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder/>
@@ -234,21 +214,36 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCustomer1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton4">
+        <Component class="javax.swing.JButton" name="btnPayments">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Generate Reports"/>
+            <Property name="text" type="java.lang.String" value="Payments"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder/>
               </Border>
             </Property>
-            <Property name="contentAreaFilled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPaymentsActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnReports">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="18" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Reports"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
+                <MatteColorBorder/>
+              </Border>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportsActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
