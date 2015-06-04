@@ -38,15 +38,17 @@ public class DBOperation {
                 
                 
                 if (password.equals(rs.getString(2)) && "Admin Staff".equals(rs.getString(3))) {
-                    JOptionPane.showMessageDialog(null, "password is correct , admin");
+                    //JOptionPane.showMessageDialog(null, "password is correct , admin");
                     return 1;
                 } else if (password.equals(rs.getString(2)) && "Regular Staff".equals(rs.getString(3))) {
-                    JOptionPane.showMessageDialog(null, "password is correct , regular");
+                    //JOptionPane.showMessageDialog(null, "password is correct , regular");
                     return 2;
                 } else {
+                    JOptionPane.showMessageDialog(null, "Wrong Password..!");
                     return 3;
                 }
             }else {
+                JOptionPane.showMessageDialog(null, "Wrong Username..!");
                 return 4;
 
             }
@@ -54,6 +56,7 @@ public class DBOperation {
 
         } catch (SQLException | HeadlessException e) {
             System.out.println(e);
+            JOptionPane.showMessageDialog(null, "Network Error..!");
             return 5;
         } finally {
             try {
