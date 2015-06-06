@@ -4,7 +4,6 @@
  */
 package pilgrimscrutinizer;
 
-
 import java.awt.HeadlessException;
 import java.sql.Connection;
 //import java.sql.DriverManager;
@@ -25,18 +24,18 @@ public class DBOperation {
     public int login(String username, String password) {
         // TODO add your handling code here:
         try {
-            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);           
+            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
             String sql;        // TODO add your handling code here:
             sql = "SELECT Name,Password,Emptype FROM user WHERE Username=?";
             pst = (PreparedStatement) con.prepareStatement(sql);
             pst.setString(1, username);
             rs = pst.executeQuery();
-            if (rs.next()){
+            if (rs.next()) {
                 System.out.println(rs.getString(1));
                 System.out.println(rs.getString(2));
                 System.out.println(rs.getString(3));
-                
-                
+
+
                 if (password.equals(rs.getString(2)) && "Admin Staff".equals(rs.getString(3))) {
                     //JOptionPane.showMessageDialog(null, "password is correct , admin");
                     return 1;
@@ -47,7 +46,7 @@ public class DBOperation {
                     JOptionPane.showMessageDialog(null, "Wrong Password..!");
                     return 3;
                 }
-            }else {
+            } else {
                 JOptionPane.showMessageDialog(null, "Wrong Username..!");
                 return 4;
 
@@ -72,7 +71,7 @@ public class DBOperation {
         }
     }
 
-public int checkUsername(String username) {
+    public int checkUsername(String username) {
         try {
             con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
             String query = "SELECT Username FROM user";
@@ -102,7 +101,8 @@ public int checkUsername(String username) {
 
         }
     }
-public boolean addNewUser(UserDetails ud) {
+
+    public boolean addNewUser(UserDetails ud) {
         try {
             con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
             String query = "INSERT INTO user VALUES(?,?,?,?,?,?,?,?)";
@@ -133,4 +133,79 @@ public boolean addNewUser(UserDetails ud) {
         }
     }
 
+    public int checkNIC(String NIC) {
+        try {
+            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
+            String query = "SELECT NIC FROM user";
+            pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                if (NIC.equals(rs.getString(1))) {
+                    return 0;
+
+                }
+            }
+            return 1;
+
+        } catch (Exception e) {
+            System.out.print(e);
+            return 2;
+        } finally {
+            try {
+                if (pst != null) {
+                    pst.close();
+                }
+                if (con != null) {
+                    con.close();
+                }
+            } catch (Exception e) {
+            }
+
+        }
+    }
+
+    public UserDetails getUserDetails(String NIC) {
+        UserDetails ud = new UserDetails();
+        try {
+            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
+            String query = "SELECT * FROM user WHERE NIC =?";
+            pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
+            pst.setString(1, NIC);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                ud.setEmpID(rs.getInt(1));
+                ud.setEmployeeType(rs.getString(2));
+                ud.setName(rs.getString(3));
+                ud.setAddress(rs.getString(4));
+                ud.setMobile(rs.getInt(5));
+                ud.setNic(rs.getString(6));
+                ud.setUsername(rs.getString(7));
+            }
+            return ud;
+
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+
+    }
+
+    public boolean editUser(UserDetails user, String Nic) {
+        try {
+            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
+            String query = "UPDATE user SET Emptype =?,Name=?,Address=?,Mobile=?,NIC=? WHERE NIC=?";
+            pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
+           pst.setString(1, user.getEmployeeType());
+           pst.setString(2, user.getName());
+           pst.setString(3, user.getAddress());
+           pst.setInt(4, user.getMobile());
+           pst.setString(5, user.getNic());
+           pst.setString(6, Nic);
+            return true;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
 }

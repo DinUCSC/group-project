@@ -124,21 +124,24 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUsernameActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-        LoginDetails ld = new LoginDetails();
+        //LoginDetails ld = new LoginDetails();
         DBOperation db = new DBOperation();
         int log = db.login(txtUsername.getText(), txtPassword.getText());
         switch (log) {
             case 1: {
                 Admin ad = new Admin();
                 ad.setVisible(true);
-                ad.user=txtUsername.getText();
+                //ad.user=txtUsername.getText();
+                LoginDetails ld=new LoginDetails();
+                ld.setUsername(txtUsername.getText());
+                ad.setCurrentUser("You Logged as: "+txtUsername.getText()+"(Admin Staff)");
                 this.dispose();
                 break;
             }
             case 2: {
                 Regular rg=new Regular();
                 rg.setVisible(true);
-                rg.user=txtUsername.getText();
+                rg.setCurrentUser("You Logged as: "+txtUsername.getText()+"(Admin Staff)");
                 this.dispose();
                 break;
             }
