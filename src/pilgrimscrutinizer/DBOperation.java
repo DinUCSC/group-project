@@ -218,6 +218,7 @@ public class DBOperation {
             pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
             pst.setString(1, newPassword);
             pst.setString(2, username);
+            pst.executeUpdate();
             return true;
         } catch (Exception ex) {
             System.out.println(ex);
