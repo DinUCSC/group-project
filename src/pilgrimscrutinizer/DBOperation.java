@@ -202,7 +202,8 @@ public class DBOperation {
             pst.setString(3, user.getAddress());
             pst.setInt(4, user.getMobile());
             pst.setString(5, user.getNic());
-            pst.setString(6, Nic);
+            pst.setString(6, user.getNic());
+            pst.executeUpdate();
             return true;
         } catch (Exception ex) {
             System.out.println(ex);
