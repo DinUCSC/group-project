@@ -209,4 +209,18 @@ public class DBOperation {
             return false;
         }
     }
+    public boolean changePassword(String username, String newPassword) {
+        try {
+            con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
+            String query;
+            query = "UPDATE user SET Password = ? WHERE Username=?";
+            pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
+            pst.setString(1, newPassword);
+            pst.setString(2, username);
+            return true;
+        } catch (Exception ex) {
+            System.out.println(ex);
+            return false;
+        }
+    }
 }

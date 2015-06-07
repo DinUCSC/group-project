@@ -9,21 +9,34 @@ package Gui;
  * @author HP
  */
 public class Admin extends javax.swing.JFrame {
-public String user;
-       
+
+    private String user;
+    private String password;
+
     /**
      * Creates new form Admin
      */
     public Admin() {
         initComponents();
-        
-        
-        
-        
+
+
+
+
     }
-public void setCurrentUser(String CurrentUser){
-    txtUser.setText(CurrentUser);
-}
+
+    public void setCurrentUser(String currentUser) {
+        txtUser.setText(currentUser);
+
+    }
+
+    public void setpassword(String pword) {
+        password = pword;
+    }
+
+    public void setuser(String cuser) {
+        user = cuser;
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -199,6 +212,11 @@ public void setCurrentUser(String CurrentUser){
 
     private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
         // TODO add your handling code here:
+        ChangePassword cp = new ChangePassword();
+        cp.setUser(this.user);
+        cp.setCurrentpassword(this.password);
+        cp.setCurrentUser(this.user);
+        cp.setVisible(true);
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
     private void btnTour1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTour1ActionPerformed
@@ -207,7 +225,7 @@ public void setCurrentUser(String CurrentUser){
 
     private void btnUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUserActionPerformed
         // TODO add your handling code here:
-        User u=new User();
+        User u = new User();
         u.setVisible(true);
     }//GEN-LAST:event_btnUserActionPerformed
 
@@ -266,4 +284,9 @@ public void setCurrentUser(String CurrentUser){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the user
+     */
+    
 }

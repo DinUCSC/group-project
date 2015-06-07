@@ -130,17 +130,22 @@ public class Login extends javax.swing.JFrame {
         switch (log) {
             case 1: {
                 Admin ad = new Admin();
+                ad.setCurrentUser(null);
                 ad.setVisible(true);
-                //ad.user=txtUsername.getText();
+                ad.setuser(txtUsername.getText());
+                ad.setpassword(txtPassword.getText());
+                ad.setCurrentUser("You Logged as: "+txtUsername.getText()+"(Admin Staff)");                
                 LoginDetails ld=new LoginDetails();
                 ld.setUsername(txtUsername.getText());
-                ad.setCurrentUser("You Logged as: "+txtUsername.getText()+"(Admin Staff)");
+                ld.setUsername(txtUsername.getText());
                 this.dispose();
                 break;
             }
             case 2: {
                 Regular rg=new Regular();
                 rg.setVisible(true);
+                rg.setuser(txtUsername.getText());
+                rg.setpassword(txtPassword.getText());
                 rg.setCurrentUser("You Logged as: "+txtUsername.getText()+"(Admin Staff)");
                 this.dispose();
                 break;

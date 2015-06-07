@@ -10,6 +10,9 @@ package Gui;
  */
 public class Regular extends javax.swing.JFrame {
 
+    private String user;
+    private String password;
+
     /**
      * Creates new form Regular
      */
@@ -17,8 +20,17 @@ public class Regular extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void setCurrentUser(String CurrentUser) {
-        txtUser.setText(CurrentUser);
+    public void setCurrentUser(String currentUser) {
+        txtUser.setText(currentUser);
+
+    }
+
+    public void setpassword(String pword) {
+        password = pword;
+    }
+
+    public void setuser(String cuser) {
+        user = cuser;
     }
 
     /**
