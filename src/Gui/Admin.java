@@ -65,7 +65,7 @@ public void setCurrentUser(String CurrentUser){
 
         btnUser.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnUser.setText("User");
-        btnUser.setBorder(new javax.swing.border.MatteBorder(null));
+        btnUser.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         btnUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUserActionPerformed(evt);
@@ -74,19 +74,19 @@ public void setCurrentUser(String CurrentUser){
 
         btnTour.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnTour.setText("Tour");
-        btnTour.setBorder(new javax.swing.border.MatteBorder(null));
+        btnTour.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
 
         btnCustomer.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCustomer.setText("Customer");
-        btnCustomer.setBorder(new javax.swing.border.MatteBorder(null));
+        btnCustomer.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
 
         btnConfirmation.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnConfirmation.setText("Confirmation");
-        btnConfirmation.setBorder(new javax.swing.border.MatteBorder(null));
+        btnConfirmation.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
 
         btnTour1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnTour1.setText("Search");
-        btnTour1.setBorder(new javax.swing.border.MatteBorder(null));
+        btnTour1.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
         btnTour1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTour1ActionPerformed(evt);
@@ -95,15 +95,15 @@ public void setCurrentUser(String CurrentUser){
 
         btnDiscounts.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnDiscounts.setText("Discounts");
-        btnDiscounts.setBorder(new javax.swing.border.MatteBorder(null));
+        btnDiscounts.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
 
         btnPayments.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnPayments.setText("Payments");
-        btnPayments.setBorder(new javax.swing.border.MatteBorder(null));
+        btnPayments.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
 
         btnReports.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnReports.setText("Reports");
-        btnReports.setBorder(new javax.swing.border.MatteBorder(null));
+        btnReports.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
 
         txtUser.setEditable(false);
         txtUser.addActionListener(new java.awt.event.ActionListener() {

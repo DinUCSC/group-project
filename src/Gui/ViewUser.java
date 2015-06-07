@@ -4,6 +4,7 @@
  */
 package Gui;
 
+import javax.swing.JOptionPane;
 import pilgrimscrutinizer.DBOperation;
 import pilgrimscrutinizer.UserDetails;
 
@@ -12,7 +13,9 @@ import pilgrimscrutinizer.UserDetails;
  * @author HP
  */
 public class ViewUser extends javax.swing.JFrame {
-    DBOperation db=new DBOperation();
+
+    DBOperation db = new DBOperation();
+
     /**
      * Creates new form ViewUser
      */
@@ -123,17 +126,28 @@ public class ViewUser extends javax.swing.JFrame {
         int i;
         i = db.checkNIC(txtNIC.getText());
         UserDetails ud;
-        switch (i){
+        switch (i) {
             case 0: {
-            ud=db.getUserDetails(txtNIC.getText());
-            ViewUserDetails vud=new ViewUserDetails();
-            vud.setFields(ud);
-            vud.setNIC(txtNIC.getText());
-            vud.setVisible(true);
-            this.dispose();
+                ud = db.getUserDetails(txtNIC.getText());
+                ViewUserDetails vud = new ViewUserDetails();
+                vud.setFields(ud);
+                vud.setNIC(txtNIC.getText());
+                vud.setVisible(true);
+                this.dispose();
+                break;
+            }
+            case 1: {
+                JOptionPane.showMessageDialog(null, "Wrong NIC, try again..!");
+                txtNIC.setText("");
+                break;
+            }
+            case 2: {
+                JOptionPane.showMessageDialog(null, "Network error, try again..!");
+                txtNIC.setText("");
+                break;
             }
         }
-        
+
     }//GEN-LAST:event_btnOKActionPerformed
 
     /**

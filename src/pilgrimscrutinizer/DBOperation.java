@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 //import Gui.Login;
 
 public class DBOperation {
-
+    
     String url = "jdbc:mysql://localhost:3306/plgrimscrutinizer";
     String usernamel = "root";
     String passwordl = "";
@@ -20,7 +20,7 @@ public class DBOperation {
     PreparedStatement pst = null;
     ResultSet rs = null;
     ResultSet lg = null;
-
+    
     public int login(String username, String password) {
         // TODO add your handling code here:
         try {
@@ -34,8 +34,8 @@ public class DBOperation {
                 System.out.println(rs.getString(1));
                 System.out.println(rs.getString(2));
                 System.out.println(rs.getString(3));
-
-
+                
+                
                 if (password.equals(rs.getString(2)) && "Admin Staff".equals(rs.getString(3))) {
                     //JOptionPane.showMessageDialog(null, "password is correct , admin");
                     return 1;
@@ -49,10 +49,10 @@ public class DBOperation {
             } else {
                 JOptionPane.showMessageDialog(null, "Wrong Username..!");
                 return 4;
-
+                
             }
-
-
+            
+            
         } catch (SQLException | HeadlessException e) {
             System.out.println(e);
             JOptionPane.showMessageDialog(null, "Network Error..!");
@@ -67,10 +67,10 @@ public class DBOperation {
                 }
             } catch (Exception e) {
             }
-
+            
         }
     }
-
+    
     public int checkUsername(String username) {
         try {
             con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
@@ -80,11 +80,11 @@ public class DBOperation {
             while (rs.next()) {
                 if (username.equals(rs.getString(1))) {
                     return 0;
-
+                    
                 }
             }
             return 1;
-
+            
         } catch (Exception e) {
             System.out.print(e);
             return 2;
@@ -98,10 +98,10 @@ public class DBOperation {
                 }
             } catch (Exception e) {
             }
-
+            
         }
     }
-
+    
     public boolean addNewUser(UserDetails ud) {
         try {
             con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
@@ -132,7 +132,7 @@ public class DBOperation {
             }
         }
     }
-
+    
     public int checkNIC(String NIC) {
         try {
             con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
@@ -142,11 +142,11 @@ public class DBOperation {
             while (rs.next()) {
                 if (NIC.equals(rs.getString(1))) {
                     return 0;
-
+                    
                 }
             }
             return 1;
-
+            
         } catch (Exception e) {
             System.out.print(e);
             return 2;
@@ -160,10 +160,10 @@ public class DBOperation {
                 }
             } catch (Exception e) {
             }
-
+            
         }
     }
-
+    
     public UserDetails getUserDetails(String NIC) {
         UserDetails ud = new UserDetails();
         try {
@@ -182,26 +182,27 @@ public class DBOperation {
                 ud.setUsername(rs.getString(7));
             }
             return ud;
-
-
+            
+            
         } catch (Exception e) {
             System.out.println(e);
             return null;
         }
-
+        
     }
-
+    
     public boolean editUser(UserDetails user, String Nic) {
         try {
             con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
-            String query = "UPDATE user SET Emptype =?,Name=?,Address=?,Mobile=?,NIC=? WHERE NIC=?";
+            String query;
+            query = "UPDATE user SET Emptype = ?,Name=?,Address=?,Mobile=?,NIC=? WHERE NIC=?";
             pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
-           pst.setString(1, user.getEmployeeType());
-           pst.setString(2, user.getName());
-           pst.setString(3, user.getAddress());
-           pst.setInt(4, user.getMobile());
-           pst.setString(5, user.getNic());
-           pst.setString(6, Nic);
+            pst.setString(1, user.getEmployeeType());
+            pst.setString(2, user.getName());
+            pst.setString(3, user.getAddress());
+            pst.setInt(4, user.getMobile());
+            pst.setString(5, user.getNic());
+            pst.setString(6, Nic);
             return true;
         } catch (Exception ex) {
             System.out.println(ex);
