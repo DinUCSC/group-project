@@ -120,12 +120,10 @@ public class ChangePassword extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtCurrentPassword)
-                        .addGap(1, 1, 1))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(txtCurrentPassword))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNewPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE))
@@ -174,6 +172,7 @@ public class ChangePassword extends javax.swing.JFrame {
                 DBOperation db = new DBOperation();
                 if (db.changePassword(user, txtConfirmPassword.getText())) {
                     JOptionPane.showMessageDialog(null, "Password Reseted Successfuly..!");
+                    setCurrentpassword(txtConfirmPassword.getText());
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Error Occured try again..!");

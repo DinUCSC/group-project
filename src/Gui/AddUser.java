@@ -13,7 +13,9 @@ import pilgrimscrutinizer.UserDetails;
  * @author HP
  */
 public class AddUser extends javax.swing.JFrame {
+
     DBOperation db = new DBOperation();
+
     /**
      * Creates new form AddUser
      */
@@ -55,7 +57,6 @@ public class AddUser extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pilgrim Scrutinizer");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add New User"));
@@ -227,8 +228,18 @@ public class AddUser extends javax.swing.JFrame {
         txtUsername.setText("");
         txtPassword.setText("");
         txtConfirmPassword.setText("");
-        
+
     }
+
+    boolean checkFields() {
+        if ((txtName.getText()).replaceAll("\\W", "").isEmpty() || (txtAddress.getText()).replaceAll("\\W", "").isEmpty() || (txtMobile.getText()).replaceAll("\\W", "").length() == 10 || (txtNIC.getText()).replaceAll("\\W", "").length() == 10 || (txtPassword.getText()).replaceAll("\\s", "").isEmpty()) {
+            return false;
+
+        } else {
+            return true;
+        }
+    }
+
     private void ddEmployeeTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddEmployeeTypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ddEmployeeTypeActionPerformed
@@ -240,43 +251,48 @@ public class AddUser extends javax.swing.JFrame {
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
-        UserDetails ud = new UserDetails();
-        if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
-            int check = db.checkUsername(txtUsername.getText());
-            if (check == 1) {
-                ud.setEmpID(0);
-                ud.setEmployeeType(ddEmployeeType.getSelectedItem().toString());
-                ud.setName(txtName.getText());
-                ud.setAddress(txtAddress.getText());
-                ud.setMobile(Integer.parseInt(txtMobile.getText().toString()));
-                ud.setNic(txtNIC.getText());
-                ud.setUsername(txtUsername.getText());
-                ud.setPassword(txtPassword.getText());
-                
-                boolean result = db.addNewUser(ud);
-                
-                if (result) {
-                    JOptionPane.showMessageDialog(this, "Successfully Inserted..!");
-                    clerFields();
-                    this.dispose();
-                    
+        System.out.println(checkFields());
+        if (checkFields()) {
+            UserDetails ud = new UserDetails();
+            if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
+                int check = db.checkUsername(txtUsername.getText());
+                if (check == 1) {
+                    ud.setEmpID(0);
+                    ud.setEmployeeType(ddEmployeeType.getSelectedItem().toString());
+                    ud.setName(txtName.getText());
+                    ud.setAddress(txtAddress.getText());
+                    ud.setMobile(Integer.parseInt(txtMobile.getText().toString()));
+                    ud.setNic(txtNIC.getText());
+                    ud.setUsername(txtUsername.getText());
+                    ud.setPassword(txtPassword.getText());
+
+                    boolean result = db.addNewUser(ud);
+
+                    if (result) {
+                        JOptionPane.showMessageDialog(this, "Successfully Inserted..!");
+                        clerFields();
+                        this.dispose();
+
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Sorry error occured while inserting..!");
+
+                    }
+                } else if (check == 0) {
+                    JOptionPane.showMessageDialog(this, "Username Already exist..!");
+                    txtUsername.setText("");
+
                 } else {
-                    JOptionPane.showMessageDialog(this, "Sorry error occured while inserting..!");
-                    
+                    JOptionPane.showMessageDialog(this, "Sorry error occured while checking username..!");
+
                 }
-            } else if (check == 0) {
-                JOptionPane.showMessageDialog(this, "Username Already exist..!");
-                txtUsername.setText("");
-                
-            }
-            else{
-            JOptionPane.showMessageDialog(this, "Sorry error occured while checking username..!");
-                
+            } else {
+                JOptionPane.showMessageDialog(this, "Password Mismatch..!");
+                txtPassword.setText("");
+                txtConfirmPassword.setText("");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Password Mismatch..!");
-            txtPassword.setText("");
-            txtConfirmPassword.setText("");
+            JOptionPane.showMessageDialog(this, "Some compulsory fields are missing or invalid information..!");
+
         }
     }//GEN-LAST:event_btnAddUserActionPerformed
 

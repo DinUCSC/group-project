@@ -109,6 +109,7 @@ public class User extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddUser ad=new AddUser();
         ad.setVisible(true);
+        
     }//GEN-LAST:event_btnAddUserActionPerformed
 
     private void btnViewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewUserActionPerformed

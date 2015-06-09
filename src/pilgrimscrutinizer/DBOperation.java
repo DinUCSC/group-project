@@ -31,9 +31,9 @@ public class DBOperation {
             pst.setString(1, username);
             rs = pst.executeQuery();
             if (rs.next()) {
-                System.out.println(rs.getString(1));
+                /*System.out.println(rs.getString(1));
                 System.out.println(rs.getString(2));
-                System.out.println(rs.getString(3));
+                System.out.println(rs.getString(3));*/
                 
                 
                 if (password.equals(rs.getString(2)) && "Admin Staff".equals(rs.getString(3))) {
@@ -195,14 +195,19 @@ public class DBOperation {
         try {
             con = (Connection) DriverManager.getConnection(url, this.usernamel, this.passwordl);
             String query;
-            query = "UPDATE user SET Emptype = ?,Name=?,Address=?,Mobile=?,NIC=? WHERE NIC=?";
+            //query = "UPDATE user SET Emptype='"+user.getEmployeeType()+"',Name='"+user.getName()+"', Address='"+user.getAddress()+"',Mobile="+user.getMobile()+",NIC='"+user.getNic()+"' WHERE NIC="+Nic;
+            query = "UPDATE user SET Emptype=? , Name=? , Address=? , Mobile=?  WHERE NIC=?";
             pst = (com.mysql.jdbc.PreparedStatement) con.prepareStatement(query);
             pst.setString(1, user.getEmployeeType());
             pst.setString(2, user.getName());
             pst.setString(3, user.getAddress());
             pst.setInt(4, user.getMobile());
             pst.setString(5, user.getNic());
+
+            //pst.setString(6, user.getNic());
+
             pst.setString(6, user.getNic());
+
             pst.executeUpdate();
             return true;
         } catch (Exception ex) {

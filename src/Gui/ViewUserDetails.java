@@ -248,7 +248,6 @@ public class ViewUserDetails extends javax.swing.JFrame {
         ud = db.getUserDetails(NIC);
         EditUser ed=new EditUser();
         ed.setFields(ud);
-        //ed.setud(ud);
         ed.setVisible(true);
         this.dispose();
 

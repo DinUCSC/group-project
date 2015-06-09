@@ -198,6 +198,11 @@ public class Regular extends javax.swing.JFrame {
 
     private void btnChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangePasswordActionPerformed
         // TODO add your handling code here:
+        ChangePassword cp = new ChangePassword();
+        cp.setUser(this.user);
+        cp.setCurrentpassword(this.password);
+        cp.setCurrentUser(this.user);
+        cp.setVisible(true);
     }//GEN-LAST:event_btnChangePasswordActionPerformed
 
     private void btnTour1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTour1ActionPerformed
