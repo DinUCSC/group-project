@@ -4,6 +4,8 @@
  */
 package Gui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author HP
@@ -56,8 +58,13 @@ public class Regular extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Pilgrim Scrutinizer");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         btnChangePassword.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnChangePassword.setText("Change Password");
@@ -232,6 +239,11 @@ public class Regular extends javax.swing.JFrame {
         Login lg =new Login();
         lg.setVisible(true);
     }//GEN-LAST:event_btnSignOutActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Please sign out.....");
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
