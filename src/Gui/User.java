@@ -109,6 +109,7 @@ public class User extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddUser ad=new AddUser();
         ad.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_btnAddUserActionPerformed
 
@@ -117,6 +118,7 @@ public class User extends javax.swing.JFrame {
         ViewUser vu=new ViewUser();
         vu.setVisible(true);
         this.dispose();
+        //setDefaultCloseOperation(HIDE_ON_CLOSE);
     }//GEN-LAST:event_btnViewUserActionPerformed
 
     /**

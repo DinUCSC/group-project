@@ -146,7 +146,7 @@ public class Login extends javax.swing.JFrame {
                 rg.setVisible(true);
                 rg.setuser(txtUsername.getText());
                 rg.setpassword(txtPassword.getText());
-                rg.setCurrentUser("You Logged as: "+txtUsername.getText()+"(Admin Staff)");
+                rg.setCurrentUser("You Logged as: "+txtUsername.getText()+"(Regular Staff)");
                 this.dispose();
                 break;
             }

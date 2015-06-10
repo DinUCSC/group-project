@@ -231,15 +231,14 @@ public class AddUser extends javax.swing.JFrame {
 
     }
 
-    boolean checkFields() {
-        if ((txtName.getText()).replaceAll("\\W", "").isEmpty() || (txtAddress.getText()).replaceAll("\\W", "").isEmpty() || (txtMobile.getText()).replaceAll("\\W", "").length() == 10 || (txtNIC.getText()).replaceAll("\\W", "").length() == 10 || (txtPassword.getText()).replaceAll("\\s", "").isEmpty()) {
+   boolean checkFields() {
+        if ((txtName.getText()).replaceAll("\\W", "").isEmpty() || (txtAddress.getText()).replaceAll("\\W", "").isEmpty() || (txtMobile.getText()).replaceAll("\\W", "").length() != 10 || (txtNIC.getText()).replaceAll("\\W", "").length() != 10 || txtPassword.getText().isEmpty()) {
             return false;
 
         } else {
             return true;
         }
     }
-
     private void ddEmployeeTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ddEmployeeTypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ddEmployeeTypeActionPerformed
@@ -253,53 +252,52 @@ public class AddUser extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.out.println(checkFields());
         if (checkFields()) {
-            UserDetails ud = new UserDetails();
-            if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
-                int check = db.checkUsername(txtUsername.getText());
-                if (check == 1) {
-                    ud.setEmpID(0);
-                    ud.setEmployeeType(ddEmployeeType.getSelectedItem().toString());
-                    ud.setName(txtName.getText());
-                    ud.setAddress(txtAddress.getText());
-                    ud.setMobile(Integer.parseInt(txtMobile.getText().toString()));
-                    ud.setNic(txtNIC.getText());
-                    ud.setUsername(txtUsername.getText());
-                    ud.setPassword(txtPassword.getText());
+        UserDetails ud = new UserDetails();
+        if (txtPassword.getText().equals(txtConfirmPassword.getText())) {
+            int check = db.checkUsername(txtUsername.getText());
+            if (check == 1) {
+                ud.setEmpID(0);
+                ud.setEmployeeType(ddEmployeeType.getSelectedItem().toString());
+                ud.setName(txtName.getText());
+                ud.setAddress(txtAddress.getText());
+                ud.setMobile(Integer.parseInt(txtMobile.getText().toString()));
+                ud.setNic(txtNIC.getText());
+                ud.setUsername(txtUsername.getText());
+                ud.setPassword(txtPassword.getText());
 
-                    boolean result = db.addNewUser(ud);
+                boolean result = db.addNewUser(ud);
 
-                    if (result) {
-                        JOptionPane.showMessageDialog(this, "Successfully Inserted..!");
-                        clerFields();
-                        this.dispose();
-
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Sorry error occured while inserting..!");
-
-                    }
-                } else if (check == 0) {
-                    JOptionPane.showMessageDialog(this, "Username Already exist..!");
-                    txtUsername.setText("");
+                if (result) {
+                    JOptionPane.showMessageDialog(this, "Successfully Inserted..!");
+                    clerFields();
+                    this.dispose();
 
                 } else {
-                    JOptionPane.showMessageDialog(this, "Sorry error occured while checking username..!");
+                    JOptionPane.showMessageDialog(this, "Sorry error occured while inserting..!");
 
                 }
+            } else if (check == 0) {
+                JOptionPane.showMessageDialog(this, "Username Already exist..!");
+                txtUsername.setText("");
+
             } else {
-                JOptionPane.showMessageDialog(this, "Password Mismatch..!");
-                txtPassword.setText("");
-                txtConfirmPassword.setText("");
+                JOptionPane.showMessageDialog(this, "Sorry error occured while checking username..!");
+
             }
         } else {
-            JOptionPane.showMessageDialog(this, "Some compulsory fields are missing or invalid information..!");
-
+            JOptionPane.showMessageDialog(this, "Password Mismatch..!");
+            txtPassword.setText("");
+            txtConfirmPassword.setText("");
         }
-    }//GEN-LAST:event_btnAddUserActionPerformed
+         } else {
+        JOptionPane.showMessageDialog(this, "Some compulsory fields are missing or invalid information..!");
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+    }
+    }//GEN-LAST:event_btnAddUserActionPerformed
+/**
+ * @param args the command line arguments
+ */
+public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -310,16 +308,40 @@ public class AddUser extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                }
+                
+
+
+
+}
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddUser.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+
+
+catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AddUser.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+
+
+catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AddUser.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } 
+
+
+
+catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AddUser.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
